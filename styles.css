@@ -1,18 +1,16 @@
 /*Global Styles*/
 body {
-    width: 90vw;
-    height: 100vh;
+    /* width: 100vw; */
     margin: 0;
     padding: 0;
     background-color: rgba(30 30 80);
     text-align: center;
-    align-items: center;
     display: flex;
     flex-direction: column;
-    margin-left: 5%;
     color: white;
-    margin-top: 3%;
-    
+    padding-top: 3%;
+    justify-content: center;
+    align-items: center;    
 }
 
 h1 {
@@ -23,6 +21,7 @@ h1 {
     margin-bottom: 20px;
 }
 
+/* Nav Bar */
 nav {
     width: 90vw;
     border: 2px solid white;
@@ -30,7 +29,8 @@ nav {
     justify-content: center;
     display: grid;
     grid-template-columns: repeat(4, 1fr);
-    
+    position: sticky;
+    top: 0;
 }
 
 nav a {
@@ -47,36 +47,19 @@ nav a:hover {
     background-color: white;
 }
 
+/* Components */
 main {
-    width: 100%;
+    width: 90%;
     height: 100%;
     display: flex;
     justify-content: space-evenly;
-    align-items: top;
-    /* display: grid;
-    grid-template-columns: 1fr 1fr 1fr;
-    grid-template-rows: 1fr 1fr; */
-    /* background-color: green; */
+    background-color: white;
+    padding: 5%;
+    overflow-x: hidden;
 }
 
-img {
-    height: 15vh;
-    border: solid gray 10px;
-    border-radius: 50%;
-    padding: 30%;
-}
 
-img:hover {
-    border-color: rgb(102, 102, 214);
-    /* background-color: rgba(241, 233, 233, 0.356) */
-}
-main a {
-    margin: 0 3%;
-    transition-duration: .8;
-    display: flex;
-    justify-content: center;
-    overflow: hidden
-}
+
 
 .currentPage {
     background-color: rgba(102, 102, 214, 0.644);
