@@ -1,26 +1,23 @@
 
 
-#appMain {
-    margin-top: 10vh;
-    height: 80vh;
-}
+
 
 main a {
     margin: 0 3%;
-    transition-duration: .8;
     display: flex;
     justify-content: center;
     overflow: hidden
 }
 
 img {
+    transition-duration: .3s;
     height: 15vh;
-    border: solid gray 20px;
+    border: solid rgb(30 30 80) 190px;
     border-radius: 50%;
-    padding: 30%;
 }
 
 img:hover {
+    transition-duration: 0.5s;
     border-color: rgb(102, 102, 214);
     /* background-color: rgba(241, 233, 233, 0.356) */
 }
