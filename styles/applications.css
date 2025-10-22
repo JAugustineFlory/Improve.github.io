@@ -12,7 +12,7 @@ main a {
 img {
     transition-duration: .3s;
     height: 15vh;
-    border: solid rgb(30 30 80) 190px;
+    border: solid rgb(30 30 80) 5%;
     border-radius: 50%;
 }
 
