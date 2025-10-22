@@ -1,24 +1,39 @@
 
 
+#appMain {
+    padding-left: 5%;
+    padding-right: 5%;
+}
 
 
-main a {
-    margin: 0 3%;
+
+
+.appSelector h2 {
+    font-size: 2em;
+}
+.appSelector p {
+    font-size: 1.2em;
+}
+.appSelector {
+    transition: transform 0.25s ease, box-shadow 0.25s ease, background-color 0.25s ease, border-color 0.25s ease;
+    text-align: center;
+    width: 200px;
     display: flex;
+    flex-direction: column;
+    align-items: center;
     justify-content: center;
-    overflow: hidden
+    background-color: rgb(30 30 80);
+    color: white;
+    text-decoration: none;
+    padding: 20px;
+    margin: 5px;
+    border: 2px solid transparent;
+    border-radius: 8px;
+    cursor: pointer;
 }
-
-img {
-    transition-duration: .3s;
-    height: 15vh;
-    border: solid rgb(30 30 80) 5%;
-    border-radius: 50%;
+.appSelector:hover {
+    border-color: rgb(189, 189, 243);
+    background-color: rgb(50, 50, 130);
+    transform: translateY(-6px);
+    box-shadow: 0 8px 20px rgba(0,0,0,0.25);
 }
-
-img:hover {
-    transition-duration: 0.5s;
-    border-color: rgb(102, 102, 214);
-    /* background-color: rgba(241, 233, 233, 0.356) */
-}
-

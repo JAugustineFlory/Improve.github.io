@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>DashBoard</title>
     <link rel="stylesheet" href="/styles.css">
+    <link rel="stylesheet" href="/styles/applications.css">
     <script src="script.js"></script>
 </head>
 <body>
@@ -18,8 +19,9 @@
             <a href="\pages\readingLog.html">Reading Log</a>
     </nav>
     
-    <main>
-        <!-- Change to iFrames that change upon selection, completion, and keep hud 
-        (Future versions could simply be a browser extension hud) -->
-        <iframe title="duolingo" src="https://www.duolingo.com/learn" class="appFrame" style="border:none;"></iframe>
+    <main id="appMain">
+        <!-- (Future versions could simply be a browser extension hud)> -->
+            <a href="https://www.duolingo.com/learn" target="_blank" id="language" rel="noopener noreferrer">
+                  <img src="/Duolingo.jpg" alt="Duolingo">
+            </a>
     </main>
