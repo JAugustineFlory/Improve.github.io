@@ -4,10 +4,6 @@
     padding-left: 5%;
     padding-right: 5%;
 }
-
-
-
-
 .appSelector h2 {
     font-size: 2em;
 }
@@ -36,4 +32,59 @@
     background-color: rgb(50, 50, 130);
     transform: translateY(-6px);
     box-shadow: 0 8px 20px rgba(0,0,0,0.25);
+}
+
+/* Available languages list: remove bullets and show in rows of five */
+.availableLanguages ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    gap: 10px 16px;
+    align-items: start;
+}
+.availableLanguages li {
+    padding: 6px 8px;
+    text-align: left;
+    background: transparent;
+    border-radius: 4px;
+}
+
+/* Responsive: fewer columns on smaller screens */
+@media (max-width: 900px) {
+    .availableLanguages ul {
+        grid-template-columns: repeat(3, 1fr);
+    }
+}
+@media (max-width: 480px) {
+    .availableLanguages ul {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+
+/*-------Duolingo---------*/
+
+.contentBox {
+    background-color: rgb(30, 30, 80);
+    color: white;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+    max-width: 800px;
+    width: 100%;
+    
+}
+
+.appBox {
+    display: grid;
+    grid-template:
+        "icon" "icon" "icon"
+        "languages" "benefits" "benefits"
+        "connect" "connect" "connect"
+        ;
+    gap: 20px;
+    text-decoration: none;
+    list-style: none;
 }
