@@ -13,6 +13,11 @@ body {
     align-items: center;    
 }
 
+/* Make sizing include padding/border so percentage widths don't overflow */
+*, *::before, *::after {
+    box-sizing: border-box;
+}
+
 h1 {
     color: white;
     font-size: 3em;

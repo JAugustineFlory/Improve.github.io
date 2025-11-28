@@ -1,8 +1,14 @@
 
 
 #appMain {
+    width: 100%;
     padding-left: 5%;
     padding-right: 5%;
+    /* Use a responsive grid so tiles center and wrap without causing horizontal scroll */
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 20px;
+    justify-items: center; /* center items inside each grid cell */
 }
 .appSelector h2 {
     font-size: 2em;
@@ -34,81 +40,17 @@
     box-shadow: 0 8px 20px rgba(0,0,0,0.25);
 }
 
-/* Available languages list: remove bullets and show in rows of five */
-.availableLanguages ul {
-    list-style: none;
-    padding: 0;
-    margin: 0;
-    display: grid;
-    grid-template-columns: repeat(5, 1fr);
-    gap: 10px 16px;
-    align-items: start;
-}
-.availableLanguages li {
-    padding: 6px 8px;
-    text-align: left;
-    background: transparent;
-    border-radius: 4px;
-}
-
-/* Responsive: fewer columns on smaller screens */
-@media (max-width: 900px) {
-    .availableLanguages ul {
-        grid-template-columns: repeat(3, 1fr);
+@media (max-width: 800px) {
+    #appMain {
+        width: 100%;
+        height: 100vh;
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        justify-items: center;
+        align-content: center;
     }
-}
-@media (max-width: 480px) {
-    .availableLanguages ul {
-        grid-template-columns: repeat(2, 1fr);
-    }
-}
-
-
-/*-------Duolingo---------*/
-
-.appBox {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    grid-auto-rows: auto;
-    grid-template-areas:
-        "icon icon icon"
-        "languages benefits benefits"
-        "connect connect connect";
-    gap: 20px;
-    text-decoration: none;
-    list-style: none;
-}
-
-.contentBox {
-    background-color: rgb(30, 30, 80);
-    color: white;
-    padding: 20px;
-    border-radius: 8px;
-    box-shadow: 0 4px 10px rgba(0,0,0,0.1);
-    max-width: 800px;
-    width: 100%;
-}
-
-
-/* Map HTML attributes like grid-area="..." to real grid areas so existing markup works */
-.appBox [grid-area="icon"] { grid-area: icon; }
-.appBox [grid-area="languages"] { grid-area: languages; }
-.appBox [grid-area="benefits"] { grid-area: benefits; }
-.appBox [grid-area="connect"] { grid-area: connect; }
-
-/* Also map common class names just in case */
-.appBox .availableLanguages { grid-area: languages; }
-.appBox .benefitsOfLanguage { grid-area: benefits; }
-.appBox .connectWithDuolingo { grid-area: connect; }
-
-/* Responsive: stack into a single column on small viewports */
-@media (max-width: 720px) {
-    .appBox {
-        grid-template-columns: 1fr;
-        grid-template-areas:
-            "icon"
-            "languages"
-            "benefits"
-            "connect";
+    .appSelector {
+        width: 100%;
+        height: 40vh;
     }
 }
