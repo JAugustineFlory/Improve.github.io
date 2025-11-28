@@ -66,6 +66,19 @@
 
 /*-------Duolingo---------*/
 
+.appBox {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-auto-rows: auto;
+    grid-template-areas:
+        "icon icon icon"
+        "languages benefits benefits"
+        "connect connect connect";
+    gap: 20px;
+    text-decoration: none;
+    list-style: none;
+}
+
 .contentBox {
     background-color: rgb(30, 30, 80);
     color: white;
@@ -74,17 +87,28 @@
     box-shadow: 0 4px 10px rgba(0,0,0,0.1);
     max-width: 800px;
     width: 100%;
-    
 }
 
-.appBox {
-    display: grid;
-    grid-template:
-        "icon" "icon" "icon"
-        "languages" "benefits" "benefits"
-        "connect" "connect" "connect"
-        ;
-    gap: 20px;
-    text-decoration: none;
-    list-style: none;
+
+/* Map HTML attributes like grid-area="..." to real grid areas so existing markup works */
+.appBox [grid-area="icon"] { grid-area: icon; }
+.appBox [grid-area="languages"] { grid-area: languages; }
+.appBox [grid-area="benefits"] { grid-area: benefits; }
+.appBox [grid-area="connect"] { grid-area: connect; }
+
+/* Also map common class names just in case */
+.appBox .availableLanguages { grid-area: languages; }
+.appBox .benefitsOfLanguage { grid-area: benefits; }
+.appBox .connectWithDuolingo { grid-area: connect; }
+
+/* Responsive: stack into a single column on small viewports */
+@media (max-width: 720px) {
+    .appBox {
+        grid-template-columns: 1fr;
+        grid-template-areas:
+            "icon"
+            "languages"
+            "benefits"
+            "connect";
+    }
 }
