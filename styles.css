@@ -1,21 +1,35 @@
 /* ------   Global   -----------*/
 /* ------   Styles   -----------*/
 
+/*
+    Page layout: ensure content begins at the top so header, main, and footer
+    are visible in normal flow. Previously the container was vertically centered
+    which hid or pushed the main/footer off-screen in some viewports.
+
+    - `min-height: 100vh` ensures the body fills the viewport height so absolute
+        positioned `footer` (bottom: 30px) appears in the expected location.
+    - `justify-content: flex-start` places content from the top down instead of
+        centering vertically. `align-items: center` keeps horizontal centering for
+        elements that rely on it (nav/main widths).
+*/
 body {
-    /* width: 100vw; */
-    margin: 0;
-    padding: 0;
-    background-color: rgba(30 30 80);
-    text-align: center;
-    display: flex;
-    flex-direction: column;
-    color: rgb(30,30,80);
-    padding-top: 3%;
-    justify-content: center;
-    align-items: center;    
+        margin: 0;
+        padding: 0;
+        min-height: 100vh;
+        background-color: rgba(30,30,80,1);
+        text-align: center;
+        display: flex;
+        flex-direction: column;
+        /* page text on the dark background should be light for contrast */
+        color: white;
+        padding-top: 3%;
+        justify-content: flex-start; /* start layout at top so main/footer are visible */
+        align-items: center;
 }
 
-
+#honourText {
+    color: white;
+}
 /* Make sizing include padding/border so percentage widths don't overflow */
 *, *::before, *::after {
     box-sizing: border-box;
@@ -87,6 +101,8 @@ nav {
     border-radius: 20px;
     justify-content: center;
     display: grid;
+    /* main contains the site content; use a dark text color on white background */
+    color: rgb(30,30,80);
     grid-template-columns: repeat(4, 1fr);
     position: sticky;
     top: 0;
