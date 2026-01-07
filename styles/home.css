@@ -16,3 +16,85 @@ h2 {
     font-size: 2em;
     margin-bottom: 20px;
 }
+
+/*
+  Auth modal styles
+
+  Summary:
+  - `.modal` is the full-screen overlay that darkens the page and centers `.modal-content`.
+  - We toggle `aria-hidden` between "true" and "false" in JS to show/hide the modal while
+    keeping it in the DOM for accessibility and to preserve state.
+  - `.modal-content` is the white dialog box. All form inputs and buttons live inside it.
+*/
+.modal {
+    position: fixed;
+    inset: 0;
+    display: none;
+    align-items: center;
+    justify-content: center;
+    background: rgba(0,0,0,0.4);
+    z-index: 1000;
+}
+.modal[aria-hidden="false"] {
+    display: flex;
+}
+.modal-content {
+    background: #fff;
+    padding: 20px;
+    border-radius: 8px;
+    max-width: 380px;
+    width: 90%;
+    box-shadow: 0 6px 24px rgba(0,0,0,0.2);
+    position: relative;
+}
+.modal .close {
+    position: absolute;
+    right: 10px;
+    top: 8px;
+    border: none;
+    background: transparent;
+    font-size: 1.2rem;
+    cursor: pointer;
+}
+.tabs {
+    display: flex;
+    gap: 8px;
+    margin-bottom: 8px;
+}
+.tabs button {
+    padding: 6px 10px;
+    border: 1px solid #ccc;
+    background: #f7f7f7;
+    cursor: pointer;
+}
+.tabs button.active {
+    background: #e9e9ff;
+    border-color: #9999ff;
+}
+.modal-content label {
+    display: block;
+    margin-top: 8px;
+    font-size: 0.9rem;
+}
+.modal-content input {
+    width: 100%;
+    padding: 8px;
+    margin-top: 4px;
+    box-sizing: border-box;
+}
+.modal-content button[type="submit"] {
+    margin-top: 12px;
+    padding: 8px 12px;
+}
+
+/* Small spacing for the auth link in the nav */
+#authButton {
+    margin-left: 12px;
+}
+
+/* Messages shown inside the modal (errors / validation). Keep them visible and
+   noticeable, but not too aggressive — this is purely client-side feedback. */
+#authMessage {
+    margin-top: 10px;
+    color: #a00;
+}

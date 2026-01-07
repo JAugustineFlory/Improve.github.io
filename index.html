@@ -8,7 +8,13 @@
     <link rel="stylesheet" href="styles/home.css"></link>
     <script src="script.js"></script>
 </head>
-<body onload="honour()">
+<!--
+    The `onload` attribute runs two functions when the page finishes loading:
+    1) `honour()` populates the daily motivational text into `#honourText`.
+    2) `initAuth()` initializes the client-side authentication UI and event handlers.
+    Keep both calls so the page shows the daily message and readies the sign-in modal.
+-->
+<body onload="honour(); initAuth()">
 
     <h1>DashBoard</h1>
     <!-- Navigation Bar-->
@@ -17,6 +23,13 @@
             <a href="pages/applications.html">Applications</a>
             <a href="pages/information.html">Information</a>
             <a href="pages/readingLog.html">Reading Log</a>
+            <!--
+                `authButton` is the small link in the nav that opens the authentication modal.
+                When no user is signed in it displays "Sign In". After signing in it shows
+                the username (e.g. "Hello, username") — this is updated by the JS function
+                `updateAuthUI()` which reads `sessionUser` from localStorage.
+            -->
+            <a href="#" id="authButton">Sign In</a>
     </nav>
 
     <main>
@@ -28,5 +41,55 @@
     
 
     <footer>Created by AugustFlow | Last Updated: 26 September 2025</footer>
+    <!-- Authentication modal
+         - `#authModal`: overlay container; `aria-hidden` toggles visibility without removing it from DOM.
+         - `role="dialog"` and `aria-labelledby` improve accessibility for screen readers.
+         - `.close` is a simple close button (top-right) that calls `closeModalClean()`.
+         - Tabs: `#tabSignIn` and `#tabSignUp` switch between the sign-in and sign-up forms.
+         - `#signInForm` accepts an existing username/password and submits to the client-side
+           `verifyUser()` helper (implemented in `script.js`).
+         - `#signUpForm` allows creating a basic account; it validates password confirmation
+           before calling `createUser()` in `script.js`.
+         - `#authMessage` shows validation or error messages and uses `aria-live="polite"`
+           so screen readers announce changes.
+    -->
+    <div id="authModal" class="modal" aria-hidden="true">
+        <div class="modal-content" role="dialog" aria-labelledby="authTitle">
+            <!-- Close button for the modal -->
+            <button class="close" id="authClose" aria-label="Close">×</button>
+
+            <!-- Simple tab controls: Sign In (default) / Sign Up -->
+            <div class="tabs">
+                <button id="tabSignIn" class="active">Sign In</button>
+                <button id="tabSignUp">Sign Up</button>
+            </div>
+
+            <!-- Title updated by JS to reflect current tab or signed-in state -->
+            <h3 id="authTitle">Sign In</h3>
+
+            <!-- Sign-in form: when submitted JS will call `verifyUser()` then create a session. -->
+            <form id="signInForm">
+                <label for="si-username">Username</label>
+                <input id="si-username" name="username" required />
+                <label for="si-password">Password</label>
+                <input id="si-password" name="password" type="password" required />
+                <button type="submit">Sign In</button>
+            </form>
+
+            <!-- Sign-up form: hidden by default; creates new user via `createUser()` in JS. -->
+            <form id="signUpForm" style="display:none">
+                <label for="su-username">Username</label>
+                <input id="su-username" name="username" required />
+                <label for="su-password">Password</label>
+                <input id="su-password" name="password" type="password" required />
+                <label for="su-password-confirm">Confirm Password</label>
+                <input id="su-password-confirm" name="passwordConfirm" type="password" required />
+                <button type="submit">Create Account</button>
+            </form>
+
+            <!-- Area where JS will write short messages (errors, confirmations). -->
+            <div id="authMessage" aria-live="polite"></div>
+        </div>
+    </div>
 </body>
 </html>
