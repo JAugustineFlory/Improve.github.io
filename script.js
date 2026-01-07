@@ -139,10 +139,17 @@ function updateAuthUI() {
     const authButton = document.getElementById('authButton');
     const session = localStorage.getItem('sessionUser');
     if (!authButton) return;
+    // We update both visible text and an ARIA state so assistive tech can
+    // programmatically tell whether the user is signed in. This complements
+    // the visual change handled in CSS (e.g., different background when signed).
     if (session) {
         authButton.textContent = `Hello, ${session}`;
+        authButton.setAttribute('aria-pressed', 'true');
+        authButton.title = `Signed in as ${session}`;
     } else {
         authButton.textContent = 'Sign In';
+        authButton.setAttribute('aria-pressed', 'false');
+        authButton.title = 'Open sign-in dialog';
     }
 }
 

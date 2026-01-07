@@ -15,21 +15,22 @@
     Keep both calls so the page shows the daily message and readies the sign-in modal.
 -->
 <body onload="honour(); initAuth()">
-
-    <h1>DashBoard</h1>
+    <header>
+        <h1>DashBoard</h1>
+        <!--
+            `authButton` is the small link in the nav that opens the authentication modal.
+            When no user is signed in it displays "Sign In". After signing in it shows
+            the username (e.g. "Hello, username") — this is updated by the JS function
+            `updateAuthUI()` which reads `sessionUser` from localStorage.
+        -->
+        <a href="#" id="authButton">Sign In</a>
+    </header>
     <!-- Navigation Bar-->
     <nav>
             <a href="index.html" class="currentPage">Home</a>
             <a href="pages/applications.html">Applications</a>
             <a href="pages/information.html">Information</a>
             <a href="pages/readingLog.html">Reading Log</a>
-            <!--
-                `authButton` is the small link in the nav that opens the authentication modal.
-                When no user is signed in it displays "Sign In". After signing in it shows
-                the username (e.g. "Hello, username") — this is updated by the JS function
-                `updateAuthUI()` which reads `sessionUser` from localStorage.
-            -->
-            <a href="#" id="authButton">Sign In</a>
     </nav>
 
     <main>

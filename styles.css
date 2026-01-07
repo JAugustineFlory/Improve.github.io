@@ -1,4 +1,6 @@
-/*Global Styles*/
+/* ------   Global   -----------*/
+/* ------   Styles   -----------*/
+
 body {
     /* width: 100vw; */
     margin: 0;
@@ -13,17 +15,69 @@ body {
     align-items: center;    
 }
 
+
 /* Make sizing include padding/border so percentage widths don't overflow */
 *, *::before, *::after {
     box-sizing: border-box;
 }
 
-h1 {
+
+/*Header Styles*/
+header {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    width: 100vw;
+    align-items: center;
+}
+header h1 {
+    grid-column: 2 / span 3;
+    text-align: center;
     color: white;
     font-size: 3em;
     padding: 0;
     margin: 0;
     margin-bottom: 20px;
+}
+
+/*
+  Auth button placed in the header to the right of the title.
+  The header uses a 5-column grid. `h1` occupies the middle columns (2-4),
+  leaving column 5 available for the auth button. We place the button in
+  that column and style it to visually match the site's header (subtle,
+  white-on-transparent with a soft border and hover states).
+
+  Accessibility & behavior notes:
+  - `justify-self: end` positions the button to the far right of its grid cell.
+  - The font-size and padding are kept moderate so it doesn't overpower the title.
+*/
+#authButton {
+    grid-column: 5 / 6;        /* place in the last column of the header grid */
+    justify-self: end;         /* align to the right edge of that column */
+    align-self: center;        /* vertically center within the header */
+    margin-right: 3vw;         /* small gap from the page edge */
+    text-decoration: none;
+    color: white;
+    background: rgba(255,255,255,0.06); /* subtle translucent background */
+    border: 1px solid rgba(255,255,255,0.18);
+    padding: 6px 12px;
+    border-radius: 20px;
+    font-size: 1rem;
+    transition: background-color 200ms ease, transform 120ms ease, box-shadow 200ms ease;
+}
+
+/* Hover/focus states to provide affordance while remaining gentle */
+#authButton:hover,
+#authButton:focus {
+    background: rgba(255,255,255,0.14);
+    transform: translateY(-1px);
+    box-shadow: 0 4px 14px rgba(102,102,214,0.12);
+    outline: none;
+}
+
+/* When signed in we replace the label with "Hello, name"; keep it readable */
+#authButton[aria-pressed="true"] {
+    background: rgba(102,102,214,0.6);
+    color: white;
 }
 
 /* Nav Bar */
@@ -38,43 +92,66 @@ nav {
     top: 0;
 }
 
+/*
+  Harmonize nav links and header auth button
+
+  - Reduce nav link font-size and add padding so the nav items feel lighter and
+    match the header `authButton` scale.
+  - Keep the same hover behavior (white background + purple text) to preserve
+    your original affordance, but make transitions quicker and less overpowering.
+*/
 nav a {
-    transition-duration: 0.6s;
-    font-size: 2em;
+    transition: background-color 0.25s ease, color 0.25s ease;
+    font-size: 1.1rem; /* balanced size to match header button */
     text-decoration: none;
     color: white;
     width: 100%;
     align-self: center;
     border-radius: inherit;
+    padding: 8px 6px; /* breathing room inside each nav cell */
+    display: inline-block;
 }
 
 nav a:hover {
-    color: rgba(102 102 214);
+    color: rgba(102,102,214);
     background-color: white;
 }
-
-/* Components */
-main {
-    width: 90%;
-    height: 80vh;
-    display: flex;
-    justify-content: space-evenly;
-    background-color: white;
-    padding: 5%;
-    overflow-x: hidden;
-    margin-top: 10vh;
-}
-
-
-
 
 .currentPage {
     background-color: rgba(102, 102, 214, 0.644);
     color: pink;
 }
 
-footer {
-    position: absolute;
-    bottom: 30px;
+/* Components */
+/* Header auth button: visually aligned with nav links while remaining in header
+   - Uses the same hover affordance as nav links (white bg, purple text)
+   - Slightly smaller padding so it doesn't compete with the title
+*/
+#authButton {
+    grid-column: 5 / 6;        /* place in the last column of the header grid */
+    justify-self: end;         /* align to the right edge of that column */
+    align-self: center;        /* vertically center within the header */
+    margin-right: 3vw;         /* small gap from the page edge */
+    text-decoration: none;
+    color: white;
+    background: transparent;   /* start transparent like nav links */
+    border: none;
+    padding: 8px 10px;
+    font-size: 1.1rem;         /* match nav link size */
+    transition: background-color 0.25s ease, color 0.25s ease, transform 120ms ease;
+}
+
+/* Hover/focus mirrors nav link hover for a consistent feel */
+#authButton:hover,
+#authButton:focus {
+    color: rgba(102,102,214);
+    background-color: white;
+    transform: translateY(-1px);
+    outline: none;
+}
+
+/* Signed-in state keeps a subtle purple background for clarity */
+#authButton[aria-pressed="true"] {
+    background: rgba(102,102,214,0.6);
     color: white;
 }
